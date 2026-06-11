@@ -3,7 +3,7 @@ Format Identification for Digital Objects (fido)
 
 By [Open Preservation Foundation](http://www.openpreservation.org)
 
-[![Build Status](https://travis-ci.org/openpreserve/fido.svg?branch=master)](https://travis-ci.org/openpreserve/fido) [![Code Coverage](https://codecov.io/gh/openpreserve/fido/branch/master/graph/badge.svg)](https://codecov.io/gh/openpreserve/fido)
+[![Code Coverage](https://codecov.io/gh/openpreserve/fido/branch/master/graph/badge.svg)](https://codecov.io/gh/openpreserve/fido)
 
 FIDO is a command-line tool to identify the file formats of digital objects.
 It is designed for simple integration into automated work-flows.
@@ -69,8 +69,9 @@ Any platform
 1. Download the latest zip release from <https://github.com/openpreserve/fido/releases>
 2. Unzip into some directory
 3. Open a command shell, cd to the directory that you placed the zip contents into
-4. Run `python setup.py install` to install FIDO and dependencies.  This may require sudo on Linux/OSX or admin privileges on Windows.
-5. You should now be able to see the help text:
+4. Create and activate local Python Environment in this directory.
+5. Run `python -m pip install .` to install FIDO and dependencies.  This may require sudo on Linux/OSX or admin privileges on Windows.
+6. You should now be able to see the help text:
    `fido -h`
 
 Using pip
@@ -137,6 +138,8 @@ FIDO 1.3.3 and later have experimental Python 3 support.
 
 FIDO 1.4 and later have Python 3 support.
 
+FIDO 2.0 and later use pyproject Configuration for Installation and Development.
+
 Format Definitions
 ------------------
 
@@ -185,10 +188,10 @@ Examples running FIDO
 
 Identify all files in the current directory and below, sending output
 into file-info.csv:
-   `python fido.py -recurse . > file-info.csv`
+   `fido -recurse . > file-info.csv`
 
 Do the same as above, but also look inside of zip or tar files:
-   `python fido.py -recurse -zip . > file-info.csv`
+   `fido -recurse -zip . > file-info.csv`
 
 Take input from a list of files:
 
@@ -196,29 +199,29 @@ Linux:
 
 ```shell
 ls > files.txt
-python fido.py -input files.txt
+fido -input files.txt
 ```
 
 Windows:
 
 ```shell
 dir /b > files.txt
-python fido.py -input files.txt
+fido -input files.txt
 ```
 
 Take input from a pipe:
 
 Linux:
-   `find . -type f | python fido.py -input -`
+   `find . -type f | fido -input -`
 
 Windows:
-   `dir /b | python fido.py -input -`
+   `dir /b | fido -input -`
 
 Only show files that could not be identified:
-   `python fido.py -matchprintf "" .`
+   `fido -matchprintf "" .`
 
 Only show files that could be identified:
-   `python fido.py -nomatchprintf "" .`
+   `fido -nomatchprintf "" .`
 
 Deep scan of container objects
 ------------------------------

@@ -7,7 +7,7 @@ FIDO is a command-line tool to identify the file formats of digital objects.
 It is designed for simple integration into automated work-flows.
 """
 
-__version__ = "1.8.0dev"
+__version__ = "2.0.0-dev"
 
 # todo: move this to a conf/conf.py or something rather than init.py. Would require some cascading updates, though
 from os.path import abspath, dirname, join

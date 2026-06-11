@@ -44,7 +44,6 @@ The checklist below contains some of our expectations, and will help you create 
 - New code should contributions should adhere to the [PEP 8 -- Style Guide for Python Code](https://www.python.org/dev/peps/pep-0008/) and [PEP 257 -- Docstring Conventions](https://www.python.org/dev/peps/pep-0257/).
 - Linebreaks should be used to limit line length within reason; we do not strictly enforce the 80-character line limit of PEP 8.
 - Non-trivial changes should be accompanied by corresponding unit tests.
-- FIDO runs on Python 2 and 3 (specifically versions 2.7, 3.4 and 3.5); changes must preserve this 2/3 compatibility.
 - A pull request should resolve an existing GitHub issue and the name of its git branch should reference that issue by using the following naming convention: `dev/issue-<ISSUE_NO>-short-description`, e.g., `dev/issue-126-add-contributing-doc`.
 - Git commits should be of a manageable size and should introduce one logical change; git commit messages should adhere to the [seven rules of a great Git commit message](https://chris.beams.io/posts/git-commit/):
   - Separate subject from body with a blank line
@@ -55,12 +54,10 @@ The checklist below contains some of our expectations, and will help you create 
   - Wrap the body at 72 characters
   - Use the body to explain what and why vs. how
 
-FIDO's Travis Continuous Integration configuration runs `pytest` to execute the tests, `flake8` to check PEP 8 conformance, and `pep257` to check PEP 257 (docstring) conformance.
 You should run these tools locally before pushing a commit by running the following commands:
 
-    $ python setup.py test
+    $ pytest
     $ flake8 --ignore=E501 ./fido
-    $ pep257 --match='(?!fido).*\.py' ./fido
 
 
 ## Code Review & Approval

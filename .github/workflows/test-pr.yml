@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: ["3.8", "3.9", "3.10"]
+        python-version: [3.8, 3.9, 3.10]
 
     steps:
       - uses: actions/checkout@v3
@@ -25,10 +25,7 @@ jobs:
           pip install -U flake8 pep257 pytest-cov codecov codacy-coverage pluggy
           pip install -e .
       - name: Lint code with flake8
-        run: flake8 . --count --show-source --ignore=E231,E241,E501,W503,E203 --max-line-length=127 --statistics
-      - name: Lint code with pep257
-        if: matrix.python-version == 2.7
-        run: pep257 --match="(?!fido).*\.py" ./fido
+        run: flake8 . --count --show-source --ignore=E231,E241,E501,W503,E203 --max-line-length=120 --statistics
       - name: Test using pytest
         run: pytest --cov=fido
       - name: Generate LCOV coverage report

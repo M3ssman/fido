@@ -1,31 +1,27 @@
 [build-system]
-requires = ["setuptools>=42", "wheel", "twine", "setuptools-git-versioning>=2.0,<3"]
+requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "opf-fido"
 dynamic = ["version"]
 requires-python = ">= 3.8"
-description = """
-Format Identification for Digital Objects (FIDO).
-A command-line tool to identify the file formats of digital objects.
-FIDO uses the UK National Archives (TNA) PRONOM File Format and Container descriptions.
-"""
+description = "Format Identification for Digital Objects (FIDO)."
 readme = "README.md"
 authors = [
-    { name="Adam Farquhar (BL)" }  # Add email if available
+    { name = "Adam Farquhar (BL)" }  # Add email if available
     ]
-license = { file = "LICENSE.txt" }
+license = "Apache-2.0"
+license-files = ["LICENSE.txt"]
 
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Console",
-    "License :: OSI Approved :: Apache Software License",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11"
     ]   
 
 dependencies = [
@@ -35,13 +31,19 @@ dependencies = [
     ]
 
 [project.urls]
-homepage = "http://openpreservation.org/technology/products/fido/"
+Homepage = "https://openpreservation.org/technology/products/fido/"
+Repository = "https://github.com/openpreserve/fido"
+Issues = "https://github.com/openpreserve/fido/issues"
 
 [project.optional-dependencies]
-testing = [
-    "pytest",
+dev = [
     "pytest-cov",
     "flake8",
+    ]
+build = [
+    "build",
+    "twine",
+    "ruff",
     ]
 
 [project.scripts]
@@ -50,15 +52,17 @@ fido-prepare = "fido.pronom.prepare:main"
 fido-toxml = "fido.toxml:main"
 fido-update-signatures = "fido.pronom.update_signatures:run"
 
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.dynamic]
+version = { attr = "fido.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["fido*"]
+
 [tool.setuptools.package-data]
 "fido" = ["*.*", "conf/*.*", "pronom/*.*"]
-
-[tool.setuptools-git-versioning]
-enabled = true
-# version_file = "VERSION"
-# count_commits_from_version_file = true
-# dev_template = "{tag}.{branch}{ccount}"  # <--- note {branch} here
-# dirty_template = "{tag}.{branch}{ccount}"
 
 [tool.pytest.ini_options]
 addopts = "--maxfail=1 --strict-markers"
