@@ -3,7 +3,8 @@ Format Identification for Digital Objects (fido)
 
 By [Open Preservation Foundation](http://www.openpreservation.org)
 
-[![Code Coverage](https://codecov.io/gh/openpreserve/fido/branch/master/graph/badge.svg)](https://codecov.io/gh/openpreserve/fido)
+[![Pytest](https://github.com/openpreserve/fido/actions/workflows/pytest.yml/badge.svg)](https://github.com/openpreserve/fido/actions/workflows/pytest.yml)
+[![Coverage](./coverage.svg)](https://github.com/openpreserve/fido/actions/workflows/pytest.yml)
 
 FIDO is a command-line tool to identify the file formats of digital objects.
 It is designed for simple integration into automated work-flows.
